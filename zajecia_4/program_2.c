@@ -23,15 +23,20 @@ void randNums(int firstDim, int scndDim, double **tab){
 }
 
 double traceOfArray(int firstDim, int scndDim, double **tab){
-    double trace = 0;
-    for (int i = 0; i < firstDim; i++){
-        for (int j = 0; j < scndDim; j++){
-            if (j == i){
-                trace += tab[i][j];
+    if (firstDim != scndDim){
+        printf("Cannot calculate trace for non-square arrays");
+        return 0;
+    } else {
+        double trace = 0;
+        for (int i = 0; i < firstDim; i++){
+            for (int j = 0; j < scndDim; j++){
+                if (j == i){
+                    trace += tab[i][j];
+                }
             }
         }
+        return trace;
     }
-    return trace;
 }
 
 int main(){
