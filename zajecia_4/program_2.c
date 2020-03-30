@@ -3,8 +3,8 @@
 #include<stdlib.h>
 
 void printTab(int firstDim, int scndDim, double **tab);
-void randNums(int firstDim, int scndDim, double **tab);
-double traceOfArray(int firstDim, int scndDim, double **tab);
+void randNums(int firstDim, double **tab);
+double traceOfArray(int firstDim, double **tab);
 
 int main(){
     int firstDim, scndDim;
@@ -20,10 +20,10 @@ int main(){
     }
     printf("\nTab after init:\n");
     printTab(firstDim, scndDim, tab);
-    randNums(firstDim, scndDim, tab);
+    randNums(firstDim, tab);
     printf("\nTab after randomization:\n");
     printTab(firstDim, scndDim, tab);
-    printf("\nTrace:\t%.2f", traceOfArray(firstDim,scndDim,tab));
+    printf("\nTrace:\t%.2f", traceOfArray(firstDim,tab));
 
     for (int i = 0; i<firstDim; i++){
         free(tab[i]);
@@ -42,17 +42,18 @@ void printTab(int firstDim, int scndDim, double **tab){
     }
 }
 
-void randNums(int firstDim, int scndDim, double **tab){
+void randNums(int firstDim, double **tab){
     srand(time(NULL));
     for (int i = 0; i < firstDim; i++){
         tab[i][i] = (float)rand()/((float)RAND_MAX/20);
     }
 }
 
-double traceOfArray(int firstDim, int scndDim, double **tab){
+double traceOfArray(int firstDim, double **tab){
     double trace = 0;
     for (int i = 0; i < firstDim; i++){
         trace += tab[i][i];
     }
     return trace;
+
 }
