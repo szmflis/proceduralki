@@ -53,4 +53,11 @@ int main(){
     printf("\nTab after randomization:\n");
     printTab(firstDim, scndDim, tab);
     printf("\nTrace:\t%.2f", traceOfArray(firstDim,scndDim,tab));
+
+    for (int i = 0; i<firstDim; i++){
+        free(tab[i]);
+    }
+    free(tab);
+    
+    return 0;
 }
