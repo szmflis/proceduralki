@@ -2,21 +2,21 @@
 #include<time.h>
 #include<stdlib.h>
 
-void printTab(int firstDim, int scndDim, float tab[firstDim][scndDim]){
+void printTab(int firstDim, int scndDim, double tab[firstDim][scndDim]){
     for (int i = 0; i < firstDim; i++){
         for (int j = 0; j < scndDim; j++){
-            printf("%.2f\t", (float)tab[i][j]);
+            printf("%.2f\t", (double)tab[i][j]);
         }
         printf("\n");
     }
 }
 
-void randNums(int firstDim, int scndDim, float tab[firstDim][scndDim]){
+void randNums(int firstDim, int scndDim, double tab[firstDim][scndDim]){
     srand(time(NULL));
     for (int i = 0; i < firstDim; i++){
         for (int j = 0; j < scndDim; j++){
             if (i == j){
-                tab[i][j] = (float)rand()/(float)RAND_MAX;     
+                tab[i][j] = (double)rand()/(double)RAND_MAX;     
             }
         }
     }
@@ -30,12 +30,11 @@ int main(){
     scanf("%d", &scndDim);
 
 
-    float **tab;
-    tab = (float **)calloc(firstDim,sizeof(float *));
+    double** tab;
+    tab = (double **)calloc(firstDim,sizeof(double *));
     for (int i = 0; i<firstDim; i++){
-        tab[i] = (float *)calloc(scndDim,sizeof(float));
+        tab[i] = (double *)calloc(scndDim,sizeof(double));
     }
 
-    //randNums(firstDim, scndDim, tab);
     printTab(firstDim, scndDim, tab);
 }
