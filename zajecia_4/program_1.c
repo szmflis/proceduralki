@@ -59,7 +59,6 @@ float median(int leng, int *tab){
         return tab[middle_index-1];
     } else {
         middle_index = leng/2;
-        printf("Srodek i nastepna to: %d oraz %d\n", tab[middle_index-1], tab[middle_index]);
         return (float)(tab[middle_index-1] + tab[middle_index])/2;
     }
 }
