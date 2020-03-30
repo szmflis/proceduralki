@@ -2,50 +2,16 @@
 #include<time.h>
 #include<stdlib.h>
 
-void printTab(int firstDim, int scndDim, double **tab){
-    for (int i = 0; i < firstDim; i++){
-        for (int j = 0; j < scndDim; j++){
-            printf("%.2f\t", (double)tab[i][j]);
-        }
-        printf("\n");
-    }
-}
-
-void randNums(int firstDim, int scndDim, double **tab){
-    srand(time(NULL));
-    for (int i = 0; i < firstDim; i++){
-        for (int j = 0; j < scndDim; j++){
-            if (i == j){
-                tab[i][j] = (float)rand()/((float)RAND_MAX/20);
-            }
-        }
-    }
-}
-
-double traceOfArray(int firstDim, int scndDim, double **tab){
-    if (firstDim != scndDim){
-        printf("Cannot calculate trace for non-square arrays");
-        return 0;
-    } else {
-        double trace = 0;
-        for (int i = 0; i < firstDim; i++){
-            for (int j = 0; j < scndDim; j++){
-                if (j == i){
-                    trace += tab[i][j];
-                }
-            }
-        }
-        return trace;
-    }
-}
+void printTab(int firstDim, int scndDim, double **tab);
+void randNums(int firstDim, int scndDim, double **tab);
+double traceOfArray(int firstDim, int scndDim, double **tab);
 
 int main(){
     int firstDim, scndDim;
-    printf("Input first dimension of array:\n");
+    printf("Input dimensions of array:\n");
     scanf("%d", &firstDim);
-    printf("Input second dimension of array:\n");
-    scanf("%d", &scndDim);
 
+    scndDim = firstDim;
 
     double **tab;
     tab = (double **)malloc(firstDim*sizeof(double *));
@@ -65,4 +31,28 @@ int main(){
     free(tab);
     
     return 0;
+}
+
+void printTab(int firstDim, int scndDim, double **tab){
+    for (int i = 0; i < firstDim; i++){
+        for (int j = 0; j < scndDim; j++){
+            printf("%.2f\t", (double)tab[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void randNums(int firstDim, int scndDim, double **tab){
+    srand(time(NULL));
+    for (int i = 0; i < firstDim; i++){
+        tab[i][i] = (float)rand()/((float)RAND_MAX/20);
+    }
+}
+
+double traceOfArray(int firstDim, int scndDim, double **tab){
+    double trace = 0;
+    for (int i = 0; i < firstDim; i++){
+        trace += tab[i][i];
+    }
+    return trace;
 }

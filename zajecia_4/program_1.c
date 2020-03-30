@@ -2,6 +2,34 @@
 #include<stdlib.h>
 #include<time.h>
 
+void randNums(int leng, int *tab);
+void sort(int leng, int *tab);
+float median(int leng, int *tab);
+void printTab(int leng, int *tab);
+
+int main(){
+    printf("Input tab size: \n");
+    int leng;
+    scanf("%d", &leng);
+    int *tab = (int *)calloc(leng,sizeof(int));
+    
+    printf("Array after init: \n");
+    printTab(leng, tab);
+
+    printf("Array after randNums: \n");
+    randNums(leng, tab);
+    printTab(leng, tab);
+    
+    printf("Array after sort: \n");
+    sort(leng,tab);
+    printTab(leng, tab);
+
+    printf("Median: %.2f", median(leng,tab));
+
+    free(tab);
+    return 0;
+}
+
 void randNums(int leng, int *tab){
     srand(time(NULL));
     for (int i = 0; i < leng; i++){
@@ -41,27 +69,4 @@ void printTab(int leng, int *tab){
         printf("%d: \t%d\n", i,tab[i-1]);
     }
     printf("\n");
-}
-
-int main(){
-    printf("Input tab size: \n");
-    int leng;
-    scanf("%d", &leng);
-    int *tab = (int *)calloc(leng,sizeof(int));
-    
-    printf("Array after init: \n");
-    printTab(leng, tab);
-
-    printf("Array after randNums: \n");
-    randNums(leng, tab);
-    printTab(leng, tab);
-    
-    printf("Array after sort: \n");
-    sort(leng,tab);
-    printTab(leng, tab);
-
-    printf("Median: %f", median(leng,tab));
-
-    free(tab);
-    return 0;
 }
