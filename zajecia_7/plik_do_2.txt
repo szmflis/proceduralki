@@ -1,0 +1,3 @@
+Michal	Cwierz	Polska	11
+Marcin	Czerwonka	Polska	19
+Krzysztof	Bigos	Niemcy	123

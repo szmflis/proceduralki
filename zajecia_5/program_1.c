@@ -8,7 +8,7 @@ void countNums(char s[]);
 
 int main(){
     char name[50];
-    printf("Input name: \n");
+    printf("Input name:\n");
     scanf("%s", name);
     printf("Hello %s\n",name);
     
